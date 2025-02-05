@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useRef } from "react";
-import { AppStore, store } from "./lib/store";
+import { AppStore, store } from "./lib/redux/store";
 import { Provider } from "react-redux";
 // import { initializeCount } from '../lib/features/counter/counterSlice'
 

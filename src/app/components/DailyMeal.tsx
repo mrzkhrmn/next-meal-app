@@ -39,7 +39,7 @@ export const DailyMeal = () => {
   return (
     <div className="max-w-7xl mx-auto  py-10">
       <h1 className="text-white text-4xl text-center font-semibold uppercase">
-        Today&apos;s Recipe
+        <span className="border-b-2 border-[#ffa568]">Today&apos;s</span> Recipe
       </h1>
       <Video embedUrl={embedUrl} />
       <h3 className="text-lg text-white mt-6">{selectedMeal?.strCategory}</h3>
