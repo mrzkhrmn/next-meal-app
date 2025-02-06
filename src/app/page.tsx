@@ -1,13 +1,15 @@
 import HeroSection from "./components/HeroSection";
 import { DailyMeal } from "./components/DailyMeal";
 import { MealsSection } from "./components/MealsSection";
+import { fetchAllMeals } from "./lib/api/mealApi";
 
-export default function Home() {
+export default async function Home() {
+  const { meals } = await fetchAllMeals();
   return (
     <div>
       <HeroSection />
       <DailyMeal />
-      <MealsSection />
+      <MealsSection meals={meals} />
     </div>
   );
 }

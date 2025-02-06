@@ -4,6 +4,7 @@ export interface Meal {
   strMealThumb: string;
   strYoutube: string;
   strTags: string;
+  strArea: string;
   strCategory: string;
   strInstructions: string;
   strIngredient1: string | null;
@@ -48,6 +49,4 @@ export interface Meal {
   strMeasure20: string | null;
 }
 
-export interface MealResponse {
-  meals: Meal[];
-}
+export type MealResponse = Meal[];
