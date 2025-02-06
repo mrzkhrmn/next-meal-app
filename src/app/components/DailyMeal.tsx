@@ -11,8 +11,24 @@ export const DailyMeal = () => {
   useEffect(() => {
     if (!selectedMeal) {
       async function fetchDailyMovie() {
-        const { meals } = await fetchDailyMeal("random.php");
-        setSelectedMeal(meals[0]);
+        const lastFetchTime = Number(
+          localStorage.getItem("lastFetchTime") || 0
+        );
+        const currentTime = Date.now();
+        const twentyFourHours = 24 * 60 * 60 * 1000;
+
+        if (currentTime - lastFetchTime > twentyFourHours) {
+          const { meals } = await fetchDailyMeal();
+
+          localStorage.setItem("lastFetchTime", currentTime.toString());
+          localStorage.setItem("cachedMeal", JSON.stringify(meals[0]));
+          setSelectedMeal(meals[0]);
+        } else {
+          const cachedMeal = JSON.parse(
+            localStorage.getItem("cachedMeal") || "null"
+          );
+          setSelectedMeal(cachedMeal);
+        }
       }
       fetchDailyMovie();
     }
@@ -33,8 +49,6 @@ export const DailyMeal = () => {
       }
     }
   }
-
-  console.log(ingredients);
 
   return (
     <div className="max-w-7xl mx-auto  py-10">
