@@ -14,7 +14,7 @@ export const MealItem = ({ meal }: { meal: Meal }) => {
       />
       <div className="px-4 py-3">
         <p className="text-sm">{meal.strArea}</p>
-        <h1 className="text-lg mt-2">{meal.strMeal}</h1>
+        <h1 className="text-lg mt-2 font-semibold">{meal.strMeal}</h1>
         <p className="text-sm">{meal.strCategory}</p>
       </div>
     </div>

@@ -1,11 +1,11 @@
 export async function fetchDailyMeal() {
-  const baseUrl = process.env.BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   if (!baseUrl) {
     throw new Error("API configuration is missing");
   }
 
-  const url = new URL("random.php", baseUrl);
+  const url = new URL("/random.php", baseUrl);
 
   const response = await fetch(url.toString());
 
@@ -17,13 +17,14 @@ export async function fetchDailyMeal() {
 }
 
 export async function fetchAllMeals() {
-  const baseUrl = process.env.BASE_URL;
+  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   if (!baseUrl) {
     throw new Error("API configuration is missing");
   }
 
-  const url = new URL("search.php?s=", baseUrl);
+  const url = new URL("search.php", baseUrl);
+  url.searchParams.set("s", "");
 
   const response = await fetch(url.toString());
 
