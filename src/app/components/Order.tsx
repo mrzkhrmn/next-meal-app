@@ -1,11 +1,11 @@
 import { MealResponse } from "../types/MealType";
 
-interface FilterAndOrderProps {
+interface OrderProps {
   mealsState: MealResponse;
   setMealsState: React.Dispatch<React.SetStateAction<MealResponse>>;
 }
 
-export const Order = ({ mealsState, setMealsState }: FilterAndOrderProps) => {
+export const Order = ({ mealsState, setMealsState }: OrderProps) => {
   const handleOrder = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const orderBy = e.target.value;
 

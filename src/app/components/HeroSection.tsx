@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const HeroSection = () => {
@@ -18,9 +19,11 @@ const HeroSection = () => {
         <h1 className="text-5xl">
           Choosen Delicious <span className="font-semibold">Dish</span>
         </h1>
-        <button className="text-3xl border border-white px-4 py-2">
-          For More
-        </button>
+        <Link href="#all-meals" scroll>
+          <button className="text-3xl border border-white px-4 py-2">
+            For More
+          </button>
+        </Link>
       </div>
       <div className="w-[40%] relative flex items-center justify-center z-10">
         <input

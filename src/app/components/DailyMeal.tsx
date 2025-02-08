@@ -10,7 +10,7 @@ export const DailyMeal = () => {
 
   useEffect(() => {
     if (!selectedMeal) {
-      async function fetchDailyMovie() {
+      async function fetchDailyMealFunc() {
         const lastFetchTime = Number(
           localStorage.getItem("lastFetchTime") || 0
         );
@@ -30,7 +30,7 @@ export const DailyMeal = () => {
           setSelectedMeal(cachedMeal);
         }
       }
-      fetchDailyMovie();
+      fetchDailyMealFunc();
     }
   }, [selectedMeal]);
 

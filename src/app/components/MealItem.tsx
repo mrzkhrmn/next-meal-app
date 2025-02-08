@@ -6,10 +6,11 @@ export const MealItem = ({ meal }: { meal: Meal }) => {
   return (
     <div className="bg-[#a45928] rounded-lg overflow-hidden cursor-pointer hover:bg-[#6e3c21] transition duration-300 hover:scale-105">
       <Image
-        className="object-cover"
+        className="w-[200px] h-auto object-cover"
         alt="Meal Image"
-        width={190}
-        height={100}
+        width="0"
+        height="0"
+        sizes="100vw"
         src={meal.strMealThumb}
       />
       <div className="px-4 py-3">

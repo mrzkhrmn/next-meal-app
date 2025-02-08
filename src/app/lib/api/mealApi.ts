@@ -1,23 +1,29 @@
 export async function fetchDailyMeal() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const baseUrl = process.env.BASE_URL;
+  const endpoint = "random.php";
 
   if (!baseUrl) {
     throw new Error("API configuration is missing");
   }
 
-  const url = new URL("/random.php", baseUrl);
+  const url = new URL(endpoint, baseUrl);
 
-  const response = await fetch(url.toString());
+  try {
+    const response = await fetch(url.toString());
 
-  if (!response.ok) {
-    throw new Error(`API request failed: ${response.statusText}`);
+    if (!response.ok) {
+      throw new Error(`API request failed: ${response.statusText}`);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error("Failed to fetch daily meal:", error);
+    throw error;
   }
-
-  return response.json();
 }
 
 export async function fetchAllMeals() {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+  const baseUrl = process.env.PUBLIC_NEXT_API_BASE_URL;
 
   if (!baseUrl) {
     throw new Error("API configuration is missing");
