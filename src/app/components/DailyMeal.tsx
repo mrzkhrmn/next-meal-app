@@ -55,7 +55,7 @@ export const DailyMeal = () => {
       <h1 className="text-white text-4xl text-center font-semibold uppercase">
         <span className="border-b-2 border-[#ffa568]">Today&apos;s</span> Recipe
       </h1>
-      <Video embedUrl={embedUrl} />
+      <Video embedUrl={embedUrl} height="600" />
       <h3 className="text-lg text-white mt-6">{selectedMeal?.strArea}</h3>
       <h2 className=" text-3xl font-semibold text-white">
         {selectedMeal?.strMeal}

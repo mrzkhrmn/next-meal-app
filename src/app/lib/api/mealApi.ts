@@ -40,3 +40,20 @@ export async function fetchAllMeals() {
 
   return response.json();
 }
+
+export async function fetchMealDetail(id: string) {
+  const baseUrl = process.env.BASE_URL;
+
+  if (!baseUrl) {
+    throw new Error("API configuration is missing");
+  }
+
+  const url = new URL(`lookup.php?i=${id}`, baseUrl);
+  const response = await fetch(url.toString());
+
+  if (!response.ok) {
+    throw new Error(`API request failed: ${response.statusText}`);
+  }
+
+  return response.json();
+}
