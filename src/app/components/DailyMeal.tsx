@@ -56,13 +56,13 @@ export const DailyMeal = () => {
         <span className="border-b-2 border-[#ffa568]">Today&apos;s</span> Recipe
       </h1>
       <Video embedUrl={embedUrl} />
-      <h3 className="text-lg text-white mt-6">{selectedMeal?.strCategory}</h3>
+      <h3 className="text-lg text-white mt-6">{selectedMeal?.strArea}</h3>
       <h2 className=" text-3xl font-semibold text-white">
         {selectedMeal?.strMeal}
       </h2>
       <div className="flex items-center gap-4">
         {tags?.map((tag, i) => (
-          <div key={i} className="flex gap-4 items-center text-gray-200 mt-1">
+          <div key={i} className="flex gap-4 items-center ">
             <p>{tag} </p>
             {i < tags.length - 1 && <p>|</p>}
           </div>
@@ -71,13 +71,13 @@ export const DailyMeal = () => {
       <div className="flex items-start gap-5 mt-4">
         <div className="text-white border-r">
           <p className="underline text-lg font-semibold  mb-2">Ingredients:</p>
-          <div className="w-[250px] ">
+          <ol className="flex flex-col  whitespace-nowrap pr-4">
             {ingredients.map((ing, i) => (
-              <div key={i} className="flex gap-2 items-center">
+              <li key={i} className="flex gap-2 items-center">
                 <p className="font-semibold">{ing[0]}</p> <p>{ing[1]}</p>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
         <p className="text-white">
           <span className="font-semibold">Preparing:</span>{" "}

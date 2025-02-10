@@ -23,7 +23,7 @@ export async function fetchDailyMeal() {
 }
 
 export async function fetchAllMeals() {
-  const baseUrl = process.env.PUBLIC_NEXT_API_BASE_URL;
+  const baseUrl = process.env.BASE_URL;
 
   if (!baseUrl) {
     throw new Error("API configuration is missing");
