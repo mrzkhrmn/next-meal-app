@@ -5,6 +5,7 @@ import { fetchAllMeals } from "./lib/api/mealApi";
 
 export default async function Home() {
   const { meals } = await fetchAllMeals();
+  console.log(meals);
   return (
     <div>
       <HeroSection />
