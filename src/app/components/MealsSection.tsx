@@ -1,12 +1,15 @@
 "use client";
 
+import { useGetAllMealsQuery } from "../redux/api/mealSlice";
 import { useEffect, useState } from "react";
 import { MealResponse } from "../types/MealType";
 import { AllMealsList } from "./AllMealsList";
 import { Order } from "./Order";
 import { Filter } from "./Filter";
 
-export const MealsSection = ({ meals }: { meals: MealResponse }) => {
+export const MealsSection = () => {
+  const { data: meals, error, isLoading } = useGetAllMealsQuery();
+
   const [mealsState, setMealsState] = useState<MealResponse>([]);
   const [categoryFilter, setCategoryFilter] = useState("");
 
@@ -16,14 +19,17 @@ export const MealsSection = ({ meals }: { meals: MealResponse }) => {
 
   useEffect(() => {
     if (categoryFilter === "") {
-      setMealsState(meals);
+      setMealsState(meals || []);
     } else {
-      setMealsState(meals);
+      setMealsState(meals || []);
       setMealsState((prev) =>
         prev.filter((meal) => meal.strCategory.toLowerCase() === categoryFilter)
       );
     }
   }, [categoryFilter, meals]);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error occurred</div>;
 
   return (
     <section id="all-meals" className="max-w-7xl mx-auto border-t ">
