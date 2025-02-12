@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
+import { Provider } from "react-redux";
+import { wrapper } from "./redux/store/store";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -18,9 +20,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { store } = wrapper.useWrappedStore({});
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} antialiased`}>{children}</body>
+      <body className={`${montserrat.variable} antialiased`}>
+        <Provider store={store}>{children}</Provider>
+      </body>
     </html>
   );
 }
